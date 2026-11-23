@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: canary
+  name: cilium-lb
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "1"
 spec:
-  project: apps
+  project: platform
   source:
     repoURL: "https://github.com/RyanMillerC/rke2-gitops.git"
     targetRevision: HEAD
-    path: "apps/canary"
+    path: "platform/cilium-lb"
   destination:
     server: https://kubernetes.default.svc
-    namespace: canary
+    namespace: kube-system
   syncPolicy:
     automated: { prune: true, selfHeal: true }
     syncOptions: [CreateNamespace=true]
