@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: canary
+  namespace: canary
+data:
+  status: "argocd-bootstrap-ok"
